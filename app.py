@@ -4,7 +4,7 @@ from sklearn.metrics.pairwise import cosine_similarity
 import difflib
 import requests
 import streamlit as st
-
+import os
 # Load the data
 df = pd.read_csv("https://github.com/YBI-Foundation/Dataset/raw/main/Movies%20Recommendation.csv")
 features = df[['Movie_Genre', 'Movie_Keywords', 'Movie_Tagline', 'Movie_Cast', 'Movie_Director']].fillna('')
@@ -15,7 +15,7 @@ x = tfidf.fit_transform(x)
 Similarity_Score = cosine_similarity(x)
 
 # Directly setting the API key for testing
-API_KEY = st.secrets["omdb_api_key"]
+API_KEY = "4be41a6b"
 
 def fetch_movie_details(movie_title):
     url = f"http://www.omdbapi.com/?apikey={API_KEY}&t={movie_title}"
